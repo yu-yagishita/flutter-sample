@@ -6,6 +6,8 @@ void main() {
   );
 }
 
+String _name = 'Yu Yagishita';
+
 class FriendlyChatApp extends StatelessWidget {
   const FriendlyChatApp({
     Key? key,
@@ -17,6 +19,41 @@ class FriendlyChatApp extends StatelessWidget {
       title: 'FriendlyChat',
       home: ChatScreen(),
     );
+  }
+}
+
+class ChatMessage extends StatelessWidget {
+  ChatMessage({required this.text});
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        margin: EdgeInsets.symmetric(horizontal: 10.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(right: 16.0),
+              child: CircleAvatar(
+                child: Text(_name[0]),
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  _name,
+                  style: Theme.of(context).textTheme.headline4,
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 5.0),
+                  child: Text(text),
+                )
+              ],
+            )
+          ],
+        ));
   }
 }
 
